@@ -39,6 +39,12 @@ export default defineStore("productsStore", {
     }),
     //getters 對應 computed，將 products 傳出
     getters: {
-        sortProducts: ({products}) => { return products.sort((a, b) => a.price - b.price) }
+        //因為 getters 引入的參數是整個 store，所以把 store 中的 products 用解構的方式提取出來使用
+        sortProducts: ({ products }) => { return products.sort((a, b) => a.price - b.price) }
+
+        //寫成以下也可以
+        // sortProducts() {
+        //     return this.products.sort((a, b) => a.price - b.price);
+        // },
     }
 })
